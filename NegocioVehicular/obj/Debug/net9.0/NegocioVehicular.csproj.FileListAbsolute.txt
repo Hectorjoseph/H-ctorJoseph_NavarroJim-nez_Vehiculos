@@ -1,0 +1,15 @@
+C:\Users\salak403\Desktop\Vehiculo\H-ctorJoseph_NavarroJim-nez_Vehiculos\NegocioVehicular\obj\Debug\net9.0\NegocioVehicular.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\salak403\Desktop\Vehiculo\H-ctorJoseph_NavarroJim-nez_Vehiculos\NegocioVehicular\obj\Debug\net9.0\NegocioVehicular.AssemblyInfoInputs.cache
+C:\Users\salak403\Desktop\Vehiculo\H-ctorJoseph_NavarroJim-nez_Vehiculos\NegocioVehicular\obj\Debug\net9.0\NegocioVehicular.AssemblyInfo.cs
+C:\Users\salak403\Desktop\Vehiculo\H-ctorJoseph_NavarroJim-nez_Vehiculos\NegocioVehicular\obj\Debug\net9.0\NegocioVehicular.csproj.CoreCompileInputs.cache
+C:\Users\salak403\Desktop\Vehiculo\H-ctorJoseph_NavarroJim-nez_Vehiculos\NegocioVehicular\obj\Debug\net9.0\NegocioVehicular.sourcelink.json
+C:\Users\salak403\Desktop\Vehiculo\H-ctorJoseph_NavarroJim-nez_Vehiculos\NegocioVehicular\bin\Debug\net9.0\NegocioVehicular.exe
+C:\Users\salak403\Desktop\Vehiculo\H-ctorJoseph_NavarroJim-nez_Vehiculos\NegocioVehicular\bin\Debug\net9.0\NegocioVehicular.deps.json
+C:\Users\salak403\Desktop\Vehiculo\H-ctorJoseph_NavarroJim-nez_Vehiculos\NegocioVehicular\bin\Debug\net9.0\NegocioVehicular.runtimeconfig.json
+C:\Users\salak403\Desktop\Vehiculo\H-ctorJoseph_NavarroJim-nez_Vehiculos\NegocioVehicular\bin\Debug\net9.0\NegocioVehicular.dll
+C:\Users\salak403\Desktop\Vehiculo\H-ctorJoseph_NavarroJim-nez_Vehiculos\NegocioVehicular\bin\Debug\net9.0\NegocioVehicular.pdb
+C:\Users\salak403\Desktop\Vehiculo\H-ctorJoseph_NavarroJim-nez_Vehiculos\NegocioVehicular\obj\Debug\net9.0\NegocioVehicular.dll
+C:\Users\salak403\Desktop\Vehiculo\H-ctorJoseph_NavarroJim-nez_Vehiculos\NegocioVehicular\obj\Debug\net9.0\refint\NegocioVehicular.dll
+C:\Users\salak403\Desktop\Vehiculo\H-ctorJoseph_NavarroJim-nez_Vehiculos\NegocioVehicular\obj\Debug\net9.0\NegocioVehicular.pdb
+C:\Users\salak403\Desktop\Vehiculo\H-ctorJoseph_NavarroJim-nez_Vehiculos\NegocioVehicular\obj\Debug\net9.0\NegocioVehicular.genruntimeconfig.cache
+C:\Users\salak403\Desktop\Vehiculo\H-ctorJoseph_NavarroJim-nez_Vehiculos\NegocioVehicular\obj\Debug\net9.0\ref\NegocioVehicular.dll
