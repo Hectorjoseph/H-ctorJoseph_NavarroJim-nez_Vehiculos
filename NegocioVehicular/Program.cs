@@ -1,11 +1,10 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 
 namespace NegocioVehicular
 {
-    // ----------------- ENTIDADES -----------------
     public abstract class Persona
     {
         public string Nombre { get; set; }
@@ -52,22 +51,23 @@ namespace NegocioVehicular
 
     public class Vehiculo
     {
+        public int ClienteId { get; set; }
         public string Nombre { get; set; }
         public string Marca { get; set; }
         public string Modelo { get; set; }
-
         public List<Servicio> Servicios { get; set; } = new List<Servicio>();
 
-        public Vehiculo(string nombre, string marca, string modelo)
+        public Vehiculo(string nombre, string marca, string modelo, int clienteId)
         {
             Nombre = nombre;
             Marca = marca;
             Modelo = modelo;
+            ClienteId = clienteId;
         }
 
         public void MostrarServicios()
         {
-            Console.WriteLine($"Vehículo: {Nombre} | Marca: {Marca} | Modelo: {Modelo}");
+            Console.WriteLine($"Vehículo: {Nombre} | Marca: {Marca} | Modelo: {Modelo} | ClienteId: {ClienteId}");
             if (Servicios.Count == 0)
             {
                 Console.WriteLine("   - No hay servicios registrados.");
@@ -75,17 +75,22 @@ namespace NegocioVehicular
             }
 
             foreach (var s in Servicios)
-                Console.WriteLine($"   - Servicio: {s.Nombre}");
+                Console.WriteLine($"   - Servicio: {s.Nombre}, TrabajadorId: {s.TrabajadorId}");
         }
     }
 
     public class Servicio
     {
         public string Nombre { get; set; }
-        public Servicio(string nombre) { Nombre = nombre; }
+        public int TrabajadorId { get; set; }
+
+        public Servicio(string nombre, int trabajadorId)
+        {
+            Nombre = nombre;
+            TrabajadorId = trabajadorId;
+        }
     }
 
-    // ----------------- NUEVA CLASE AUDITORIA -----------------
     public class Auditoria
     {
         public int Id { get; set; }
@@ -107,7 +112,6 @@ namespace NegocioVehicular
         }
     }
 
-    // ----------------- PROGRAMA PRINCIPAL -----------------
     class Program
     {
         static List<Trabajador> trabajadores = new();
@@ -160,7 +164,6 @@ namespace NegocioVehicular
             } while (opcion != 0);
         }
 
-        // ----------------- MÉTODOS AUDITORÍA -----------------
         static void RegistrarAuditoria(string mensaje, string usuario = "Sistema")
         {
             auditorias.Add(new Auditoria(contadorAuditoria++, mensaje, usuario));
@@ -175,7 +178,6 @@ namespace NegocioVehicular
                 foreach (var a in auditorias) a.MostrarInfo();
         }
 
-        // ----------------- SUBMENUS -----------------
         static void MenuAgregar()
         {
             Console.WriteLine("\n--- Agregar ---");
@@ -209,14 +211,31 @@ namespace NegocioVehicular
                     RegistrarAuditoria($"Cliente agregado: {nC}");
                     break;
                 case 3:
+                    if (clientes.Count == 0)
+                    {
+                        Console.WriteLine("Debe registrar un cliente primero.");
+                        break;
+                    }
                     Console.Write("Nombre del Vehículo: ");
                     string Nv = LeerTextoSoloLetras();
                     Console.Write("Marca del Vehículo: ");
                     string Mv = LeerTextoSoloLetras();
                     Console.Write("Modelo del Vehículo: ");
                     string Mov = LeerTextoSoloLetras();
-                    Vehiculos.Add(new Vehiculo(Nv, Mv, Mov));
-                    RegistrarAuditoria($"Vehículo agregado: {Nv}");
+
+                    Console.WriteLine("Seleccione Cliente propietario:");
+                    for (int i = 0; i < clientes.Count; i++)
+                        Console.WriteLine($"{i + 1}. {clientes[i].Nombre}");
+
+                    int idxC = LeerEnteroValido();
+                    if (idxC < 1 || idxC > clientes.Count)
+                    {
+                        Console.WriteLine("Opción inválida.");
+                        break;
+                    }
+
+                    Vehiculos.Add(new Vehiculo(Nv, Mv, Mov, clientes[idxC - 1].Id));
+                    RegistrarAuditoria($"Vehículo agregado: {Nv} para Cliente {clientes[idxC - 1].Nombre}");
                     break;
                 case 4:
                     if (Vehiculos.Count == 0)
@@ -224,20 +243,38 @@ namespace NegocioVehicular
                         Console.WriteLine("No hay vehículos registrados.");
                         break;
                     }
+                    if (trabajadores.Count == 0)
+                    {
+                        Console.WriteLine("No hay trabajadores registrados.");
+                        break;
+                    }
+
                     Console.WriteLine("Seleccione un vehículo:");
                     for (int i = 0; i < Vehiculos.Count; i++)
                         Console.WriteLine($"{i + 1}. {Vehiculos[i].Nombre}");
 
-                    int idx = LeerEnteroValido();
-                    if (idx < 1 || idx > Vehiculos.Count)
+                    int idxV = LeerEnteroValido();
+                    if (idxV < 1 || idxV > Vehiculos.Count)
                     {
                         Console.WriteLine("Opción inválida.");
                         break;
                     }
+
+                    Console.WriteLine("Seleccione un trabajador que atiende:");
+                    for (int i = 0; i < trabajadores.Count; i++)
+                        Console.WriteLine($"{i + 1}. {trabajadores[i].Nombre}");
+
+                    int idxT = LeerEnteroValido();
+                    if (idxT < 1 || idxT > trabajadores.Count)
+                    {
+                        Console.WriteLine("Opción inválida.");
+                        break;
+                    }
+
                     Console.Write("Nombre del Servicio: ");
                     string nS = LeerTextoSoloLetras();
-                    Vehiculos[idx - 1].Servicios.Add(new Servicio(nS));
-                    RegistrarAuditoria($"Servicio agregado: {nS} al Vehículo {Vehiculos[idx - 1].Nombre}");
+                    Vehiculos[idxV - 1].Servicios.Add(new Servicio(nS, trabajadores[idxT - 1].Id));
+                    RegistrarAuditoria($"Servicio agregado: {nS} al Vehículo {Vehiculos[idxV - 1].Nombre} por Trabajador {trabajadores[idxT - 1].Nombre}");
                     break;
                 default:
                     Console.WriteLine("Opción inválida.");
@@ -326,7 +363,6 @@ namespace NegocioVehicular
             }
         }
 
-        // ----------------- VALIDACIONES -----------------
         static string LeerTextoSoloLetras()
         {
             string? entrada;
