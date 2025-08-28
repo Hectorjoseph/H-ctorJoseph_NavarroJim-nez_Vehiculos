@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\salak403\\Desktop\\Vehiculo\\NegocioVehicular\\NegocioVehicular.csproj": {}
+    "C:\\Users\\salak403\\Desktop\\Vehiculo\\H-ctorJoseph_NavarroJim-nez_Vehiculos\\NegocioVehicular\\NegocioVehicular.csproj": {}
   },
   "projects": {
-    "C:\\Users\\salak403\\Desktop\\Vehiculo\\NegocioVehicular\\NegocioVehicular.csproj": {
+    "C:\\Users\\salak403\\Desktop\\Vehiculo\\H-ctorJoseph_NavarroJim-nez_Vehiculos\\NegocioVehicular\\NegocioVehicular.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\salak403\\Desktop\\Vehiculo\\NegocioVehicular\\NegocioVehicular.csproj",
+        "projectUniqueName": "C:\\Users\\salak403\\Desktop\\Vehiculo\\H-ctorJoseph_NavarroJim-nez_Vehiculos\\NegocioVehicular\\NegocioVehicular.csproj",
         "projectName": "NegocioVehicular",
-        "projectPath": "C:\\Users\\salak403\\Desktop\\Vehiculo\\NegocioVehicular\\NegocioVehicular.csproj",
+        "projectPath": "C:\\Users\\salak403\\Desktop\\Vehiculo\\H-ctorJoseph_NavarroJim-nez_Vehiculos\\NegocioVehicular\\NegocioVehicular.csproj",
         "packagesPath": "C:\\Users\\salak403\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\salak403\\Desktop\\Vehiculo\\NegocioVehicular\\obj\\",
+        "outputPath": "C:\\Users\\salak403\\Desktop\\Vehiculo\\H-ctorJoseph_NavarroJim-nez_Vehiculos\\NegocioVehicular\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

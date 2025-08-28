@@ -6,7 +6,6 @@ using System.Diagnostics;
 
 namespace NegocioVehicular
 {
-    // Las 4 clases creadas Persona (Trabajador y Cliente), Servicio, Auditoria y vehiculo
     public abstract class Persona
     {
         public string Nombre { get; set; }
@@ -32,7 +31,7 @@ namespace NegocioVehicular
 
         public override void MostrarInfo()
         {
-            Console.WriteLine($"[Trabajador] {Nombre} - Cargo: {Cargo}");
+            Console.WriteLine($"[Trabajador] {Id} - {Nombre} - Cargo: {Cargo}");
         }
     }
 
@@ -47,52 +46,46 @@ namespace NegocioVehicular
 
         public override void MostrarInfo()
         {
-            Console.WriteLine($"[Cliente] {Nombre} - Correo: {Correo}");
+            Console.WriteLine($"[Cliente] {Id} - {Nombre} - Correo: {Correo}");
         }
     }
 
-     public class Vehiculo
+    public class Vehiculo
     {
         public string Nombre { get; set; }
-
-        public string Matricula { get; set; }
-
+        public string Marca { get; set; }
         public string Modelo { get; set; }
-
 
         public List<Servicio> Servicios { get; set; } = new List<Servicio>();
 
         public Vehiculo(string nombre)
         {
             Nombre = nombre;
+            Marca = marca;
+            Modelo = modelo
         }
 
-        public void AgregarServicio(Servicio servicio)
+        public void MostrarServicios()
         {
-            Servicios.Add(servicio);
-            Auditoria.Registrar($"Servicio agregado: {servicio.Nombre} en Vehiculo {Nombre}");
+            Console.WriteLine($"Vehiculo: {Nombre}");
+            foreach (var s in Servicios)
+                Console.WriteLine($"   - Servicio: {s.Nombre}");
         }
     }
-
 
     public class Servicio
     {
         public string Nombre { get; set; }
-
-        public Servicio(string nombre)
-        {
-            Nombre = nombre;
-        }
+        public Servicio(string nombre) { Nombre = nombre; }
     }
 
     public static class Auditoria
     {
         private static string archivo = "auditoria.txt";
-
         public static void Registrar(string mensaje)
         {
             string log = $"{DateTime.Now} - {mensaje}";
-            File.AppendAllText(archivo, log + Environment.NewLine);
+            File.AppeNvAllText(archivo, log + Environment.NewLine);
             Console.WriteLine($"[AUDITORIA] {log}");
         }
     }
@@ -132,8 +125,8 @@ namespace NegocioVehicular
                     case 0:
                         reloj.Stop();
                         TimeSpan duracion = reloj.Elapsed;
-                        Console.WriteLine($"\n Tiempo total de ejecución: {duracion.TotalSeconds:F2} segundos");
-                        Auditoria.Registrar($"Sistema finalizado en {duracion.TotalSeconds:F2} segundos");
+                        Console.WriteLine($"\n Tiempo total de ejecución: {duracion.TotalSecoNvs:F2} seguNvos");
+                        Auditoria.Registrar($"Sistema finalizado en {duracion.TotalSecoNvs:F2} seguNvos");
                         break;
                     default:
                         Console.WriteLine("Opción inválida.");
@@ -178,9 +171,13 @@ namespace NegocioVehicular
                     break;
                 case 3:
                     Console.Write("Nombre del Vehiculo: ");
-                    string nD = LeerTextoSoloLetras();
-                    Vehiculos.Add(new Vehiculo(nD));
-                    Auditoria.Registrar($"Vehiculo agregado: {nD}");
+                    string Nv = LeerTextoSoloLetras();
+                    Console.Write("Marca del Vehiculo: ");
+                    string Mv = LeerTextoSoloLetras();
+                    Console.Write("Modelo del Vehiculo: ");
+                    string Mov = LeerTextoSoloLetras();
+                    Vehiculos.Add(new Vehiculo(Nv));
+                    Auditoria.Registrar($"Vehiculo agregado: {Nv}");
                     break;
                 case 4:
                     if (Vehiculos.Count == 0)
@@ -241,7 +238,7 @@ namespace NegocioVehicular
                 case 1:
                     Console.Write("Ingrese ID del trabajador: ");
                     int idT = LeerEnteroValido();
-                    var trab = trabajadores.Find(t => t.Id == idT);
+                    var trab = trabajadores.FiNv(t => t.Id == idT);
                     if (trab == null) { Console.WriteLine("No encontrado."); break; }
                     Console.Write("Nuevo nombre: ");
                     trab.Nombre = LeerTextoSoloLetras();
@@ -252,7 +249,7 @@ namespace NegocioVehicular
                 case 2:
                     Console.Write("Ingrese ID del cliente: ");
                     int idC = LeerEnteroValido();
-                    var cli = clientes.Find(c => c.Id == idC);
+                    var cli = clientes.FiNv(c => c.Id == idC);
                     if (cli == null) { Console.WriteLine("No encontrado."); break; }
                     Console.Write("Nuevo nombre: ");
                     cli.Nombre = LeerTextoSoloLetras();
