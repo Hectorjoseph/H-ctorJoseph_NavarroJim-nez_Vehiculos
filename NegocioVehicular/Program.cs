@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
-using System.Diagnostics;  //  Para medir tiempo de ejecución
+using System.Diagnostics;
 
 namespace NegocioVehicular
 {
@@ -132,7 +132,7 @@ namespace NegocioVehicular
                     case 0:
                         reloj.Stop();
                         TimeSpan duracion = reloj.Elapsed;
-                        Console.WriteLine($"\n⏱ Tiempo total de ejecución: {duracion.TotalSeconds:F2} segundos");
+                        Console.WriteLine($"\n Tiempo total de ejecución: {duracion.TotalSeconds:F2} segundos");
                         Auditoria.Registrar($"Sistema finalizado en {duracion.TotalSeconds:F2} segundos");
                         break;
                     default:
